@@ -1,4 +1,6 @@
 <script>
+import googleLoginHandler from '../../utils/google.js';
+
 export default {
   props: ['method', 'company'],
   methods: {
@@ -8,6 +10,7 @@ export default {
   },
   created() {
     this.src = `src/assets/${this.company}.svg`;
+    if (this.company === "google") googleLoginHandler(window);
   }
 }
 </script>
