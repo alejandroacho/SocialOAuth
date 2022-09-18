@@ -3,6 +3,11 @@ import googleLoginHandler from '../../utils/google.js';
 
 export default {
   props: ['method', 'company'],
+  data() {
+    return {
+      possibleCompanies: ['google', 'facebook', 'twitter'],
+    };
+  },
   methods: {
     capitalize(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
@@ -16,7 +21,7 @@ export default {
 </script>
 
 <template>
-  <button :id="company">
+  <button :id="company" v-if="possibleCompanies.includes(company)">
     <img :src="src" class="white-svg logo"/>
     <p>{{capitalize(method)}} with {{capitalize(company)}}</p>
   </button>
