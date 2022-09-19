@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 const pluginName = import.meta.env.VITE_GOOGLE_PLUGIN_NAME;
 const auth2Settings = {client_id: clientId, plugin_name: pluginName};
@@ -22,8 +24,8 @@ function attachGoogleToButton(auth2, button) {
 }
 
 function handleGoogleUser(user) {
-  console.log("Google profile:", user.getBasicProfile());
-  console.log("Google user:", user);
+  const token = user.getAuthResponse().id_token;
+  axios.post(import.meta.env.VITE_GOOGLE_BACKEND_URL, {token})
 }
 
 function handleError(error) {
