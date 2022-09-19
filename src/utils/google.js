@@ -25,7 +25,7 @@ function handleGoogleUser(user) {
   axios.post(backendEndpoint, {token})
 }
 
-function getGoogleButton(document) {
+function getGoogleButton(document) {
   return document.getElementById("google");
 }
 
