@@ -15,6 +15,8 @@ export default {
   },
   created() {
     this.src = `src/assets/${this.company}.svg`;
+  },
+  mounted() {
     if (this.company === "google") googleLoginHandler(window);
   }
 }

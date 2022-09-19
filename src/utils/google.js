@@ -1,37 +1,38 @@
 import axios from "axios";
 
+
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-const pluginName = import.meta.env.VITE_GOOGLE_PLUGIN_NAME;
-const auth2Settings = {client_id: clientId, plugin_name: pluginName};
+const backendEndpoint = import.meta.env.VITE_GOOGLE_BACKEND_URL;
+
 
 function googleLoginHandler(window) {
-  window.gapi.load("auth2", () => {
-    const auth2 = window.gapi.auth2.init(auth2Settings);
-    const button = getGoogleButton(window.document);
-    attachGoogleToButton(auth2, button);
-  });
+  setGoogleAccounts(window);
+  const button = getGoogleButton(window.document);
+  attachGoogleToButton(button);
+}
+
+function setGoogleAccounts(window) {
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: clientId,
+      callback: handleGoogleUser,
+    });
+  }
 }
 
 function getGoogleButton(document) {
   return document.getElementById("google");
 }
 
-function attachGoogleToButton(auth2, button) {
-  auth2.attachClickHandler(button, {},
-    (googleUser) => handleGoogleUser(googleUser),
-    (error) => handleError(error)
-  );
+function attachGoogleToButton(button) {
+  button.onclick = function () {
+    google.accounts.id.prompt();
+  }
 }
 
 function handleGoogleUser(user) {
-  const token = user.getAuthResponse().id_token;
-  axios.post(import.meta.env.VITE_GOOGLE_BACKEND_URL, {token})
-}
-
-function handleError(error) {
-  console.log("Google error:", JSON.stringify(error, undefined, 2));
+  const token = user.credential;
+  axios.post(backendEndpoint, {token})
 }
 
 export default googleLoginHandler;
-
-
