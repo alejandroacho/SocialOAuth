@@ -6,7 +6,7 @@ export default {
   props: ['method', 'company'],
   data() {
     return {
-      possibleCompanies: ['google', 'facebook', 'twitter'],
+      possibleCompanies: ['google', 'facebook', 'twitter', 'apple'],
     };
   },
   methods: {
