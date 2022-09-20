@@ -81,3 +81,8 @@ button:hover {
   height: 1.5rem;
   margin-right: 10px;
 }
+
+:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
