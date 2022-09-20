@@ -30,7 +30,7 @@ export default {
   <div class="social-auth">
     <AuthButton :method="method" company="google"/>
     <AuthButton :method="method" company="facebook"/>
-    <AuthButton :method="method" company="twitter"/>
+    <AuthButton :method="method" company="twitter" disabled/>
   </div>
   <br>
   <a v-on:click="changeMethod">Or {{otherMethod}}</a>
