@@ -1,5 +1,6 @@
 <script>
 import googleLoginHandler from '../../utils/google.js';
+import facebookLoginHandler from '../../utils/facebook.js';
 
 export default {
   props: ['method', 'company'],
@@ -18,6 +19,7 @@ export default {
   },
   mounted() {
     if (this.company === "google") googleLoginHandler(window);
+    if (this.company === "facebook") facebookLoginHandler(window);
   }
 }
 </script>
