@@ -1,7 +1,11 @@
-# Vue 3 + Vite
+# Social OAuth
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This project is focused on test and implement the OAuth login and signup through Facebook and Google (you can enable twitter if you want but it requires more complex).
 
-## Recommended IDE Setup
+<img width="574" alt="CleanShot 2022-11-16 at 23 40 46@2x" src="https://user-images.githubusercontent.com/61828943/202310171-4c40223d-2293-4659-86ed-e1c557c06fa7.png">
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+## Installation
+1. Set the environment variables in the `.env' file.
+2. Install dependencies running `npm install`.
+3. Raise the project running `npm run dev`.
